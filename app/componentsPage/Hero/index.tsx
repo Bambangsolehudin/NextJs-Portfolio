@@ -8,6 +8,7 @@ import CircularText from '@/app/components/CircularText/CircularText'
 import GradientText from '@/app/components/GradientText/GradientText'
 import RotatingText from '@/app/components/RotatingText/RotatingText'
 import SplitText from '@/app/components/SplitText/SplitText'
+import SplashCursor from "@/app/components/SplashCursor/SplashCursor";
 
 const Lanyard = dynamic(
   () => import('@/app/components/Lanyard/Lanyard'),
@@ -27,6 +28,7 @@ export default function Hero({scrollToContact}: any) {
 
   return (
     <div className="">
+      <SplashCursor  />
       <div className="absolute top-0 right-0 left-0 bottom-0 w-full md:h-full h-[50vh]">
         <Squares 
           speed={0.5} 

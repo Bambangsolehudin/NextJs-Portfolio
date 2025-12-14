@@ -166,7 +166,8 @@ const About = ({page}: {page:string}) => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 md:px-6 px-0">
                         {aboutData.certifications.content.map(
                           (item: any, idx: number) => (
-                             <><MotionWrapper
+                             <div key={idx}>
+                             <MotionWrapper
                               variants={slideInRight}
                               initial="hidden"
                               whileInView="visible"
@@ -203,7 +204,7 @@ const About = ({page}: {page:string}) => {
 
                             </MotionWrapper>
                             
-                              </>
+                              </div>
                           )
                         )}
                       </div>

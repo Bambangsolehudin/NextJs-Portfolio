@@ -14,7 +14,7 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname()
 
-  console.log('params', pathname);
+  // console.log('params', pathname);
 
   return (
     <nav className={`${pathname == '/' ? 'md:-top-2 md:absolute md:bg-black/20 bg-black/90' : '-top-0 bg-[#1c1c1c]'}  shadow  w-full px-6 z-40 pt-2  `}>
@@ -61,7 +61,7 @@ const Navbar = () => {
               <span className="relative z-10">Projects</span>
               <span
                 className={`absolute bottom-0 left-1/2 h-0.5 w-0 bg-gray-300 transition-all duration-300 transform -translate-x-1/2 ${
-                  true ? 'w-full' : 'group-hover:w-full'
+                  pathname == '/projects' ? 'w-full' : 'group-hover:w-full'
                 }`}
               ></span>
             </div>

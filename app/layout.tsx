@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./componentsPage/Navbar";
-import SplashCursor from "./components/SplashCursor/SplashCursor";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,7 +32,6 @@ export default function RootLayout({
         <Navbar />
 
         <div className="min-h-screen overflow-x-hidden bg-[#1c1c1c] md:px-20">
-        <SplashCursor  />
           {children}
         </div>
       </body>
