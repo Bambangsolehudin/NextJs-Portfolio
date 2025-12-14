@@ -13,7 +13,7 @@ import SplitText from "@/app/components/SplitText/SplitText";
 import Journey from "../Journey";
 import { FaArrowRight } from "react-icons/fa";
 import MotionWrapper from "@/app/components/MotionWrapper";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import BlurText from "@/app/components/BlurText/BlurText";
 
 
@@ -53,9 +53,7 @@ const About = ({page}: {page:string}) => {
   const handleAnimationComplete = () => {};
 
   const router = useRouter();
-  const params = useParams(); 
-  const searchParams = useSearchParams();
-  console.log("Router in About:", searchParams);
+
 
   return (
     <>

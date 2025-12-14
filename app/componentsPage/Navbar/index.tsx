@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { techIcons } from '../Projects/projectsData';
-import { useRouter, useParams, useSearchParams, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 const Logo = techIcons?.ReactJS;
 
@@ -11,10 +11,7 @@ const Logo = techIcons?.ReactJS;
 const Navbar = () => {
  
 
-
   const router = useRouter();
-  const params = useParams();
-  const searchParams = useSearchParams()
   const pathname = usePathname()
 
   console.log('params', pathname);
