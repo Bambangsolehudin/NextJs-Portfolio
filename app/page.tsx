@@ -57,14 +57,11 @@ export default function Home() {
       
         <Hero scrollToContact={scrollToContact} />
 
-      
 
-        <button>Contact</button>
-
-
-        {/* <ScrollVelocity 
+        <ScrollVelocity 
+          className="text-clip"
           texts={[ 'JavaScript' ]} 
-        /> */}
+        />
 
 
         <div className="container md:px-10 px-4 mx-auto min-h-screen">
