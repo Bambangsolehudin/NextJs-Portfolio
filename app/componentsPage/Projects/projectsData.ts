@@ -138,6 +138,7 @@ export const techIcons = {
     NuxtJs: "https://nuxt.com/assets/design-kit/icon-green.svg",
     MongoDb: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
     ExpressJs: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    NextJs: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
 };
 
 export default projectsData;

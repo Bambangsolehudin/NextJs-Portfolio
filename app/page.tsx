@@ -24,6 +24,7 @@ import Hero from "./componentsPage/Hero";
 import Contact from "./componentsPage/Contact";
 
 import { useRef, useCallback } from "react"; // Tambahkan ini
+import ScrollVelocity from "./components/ScrollVelocity/ScrollVelocity";
 
 
 export default function Home() {
@@ -42,6 +43,8 @@ export default function Home() {
     <>
       
         <Hero scrollToContact={scrollToContact} />
+
+      
 
         <button>Contact</button>
 

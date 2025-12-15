@@ -15,6 +15,8 @@ import { FaArrowRight } from "react-icons/fa";
 import MotionWrapper from "@/app/components/MotionWrapper";
 import { useRouter } from "next/navigation";
 import BlurText from "@/app/components/BlurText/BlurText";
+import PixelTransition from "@/app/components/PixelTransition/PixelTransition";
+import ProfileCard from "@/app/components/ProfileCard/ProfileCard";
 
 
 // ----------- Types -----------
@@ -95,25 +97,75 @@ const About = ({page}: {page:string}) => {
               transition={{ delay: 1 * 0.1, duration: 0.6 }}
               className=""
             >
-              <div className={`${page == 'about' ? 'md:px-20': 'px-0'}`}>
+              <div className={`${page == 'about' ? 'md:px-4': 'px-0'}`}>
 
                 
+                <div className="flex md:flex-row flex-col justify-center items-center md:gap-10 gap-4">
+                  <div className={`${page == 'about' ? 'block' : 'hidden'}`}>
+                     <PixelTransition
+                        firstContent={
+                          <img
+                            src="/assets/profile.jpg"
+                            alt="default pixel transition content, a cat!"
+                            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                          />
+                        }
+                        secondContent={
+                          <div
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              display: "grid",
+                              placeItems: "center",
+                              backgroundColor: "#111"
+                            }}
+                          >
+                            <p style={{ fontWeight: 900, fontSize: "3rem", color: "#ffffff" }}>
+                              Hello !
+                            </p>
+                          </div>
+                        }
+                        gridSize={12}
+                        pixelColor='#ffffff'
+                        once={false}
+                        animationStepDuration={0.4}
+                        className="custom-pixel-card"
+                      />
+                        {/* <ProfileCard
+                          className="w-[1px] h-[1px]"
+                          name="Bambang"
+                          title="FE Developer"
+                          handle="karirs.bambang@gmail.com"
+                          status="Online"
+                          contactText=""
+                          avatarUrl="/assets/About/profileFoto.png"
+                          showUserInfo={true}
+                          enableTilt={true}
+                          enableMobileTilt={true}
+                          onContactClick={() => {
+                            window.location.href = "mailto:karirs.bambang@gmail.com";
+                          }}
+                        /> */}
+                  </div>
 
-                <BlurText 
-                  text="Software Developer with a strong focus on frontend development, 
-                  experienced in building responsive and high-performance web and mobile applications using Vue.js, Nuxt.js, React.js, and React Native. Proficient in developing scalable user interfaces and integrating RESTful APIs. Possesses basic backend knowledge with Express.js, 
-                  Laravel, and SQL. Committed to continuous learning and creating user-focused digital solutions.
-                  "
-                  delay={10}
-                  animateBy="words"
-                  direction="top"
-                  className="text-zinc-400 pb-5 md:text-lg text-base"
-                />
+                  <div>
+                    <BlurText 
+                      text="Software Developer with a strong focus on frontend development, 
+                      experienced in building responsive and high-performance web and mobile applications using Vue.js, Nuxt.js, React.js, and React Native. Proficient in developing scalable user interfaces and integrating RESTful APIs. Possesses basic backend knowledge with Express.js, 
+                      Laravel, and SQL. Committed to continuous learning and creating user-focused digital solutions.
+                      "
+                      delay={10}
+                      animateBy="words"
+                      direction="top"
+                      className="text-zinc-400 pb-5 md:text-lg text-base text-justify"
+                    />
+                    <div className="text-zinc-500 flex items-center gap-1 mb-5 text-xs lg:text-sm xl:text-base 2xl:text-lg">
+                      <IoMdPin /> <BlurText text="Bogor, Indonesia" delay={10} animateBy="words" direction="top" className="text-zinc-500" />
+                    </div>
+                  </div>
+                </div>
                
 
-                <div className="text-zinc-500 flex items-center gap-1 mb-5 text-xs lg:text-sm xl:text-base 2xl:text-lg">
-                  <IoMdPin /> <BlurText text="Bogor, Indonesia" delay={10} animateBy="words" direction="top" className="text-zinc-500" />
-                </div>
 
                 {/* Skills */}
                 <div className="py-6">
@@ -222,6 +274,8 @@ const About = ({page}: {page:string}) => {
 
               </div>
             </MotionWrapper>
+
+           
 
 
             

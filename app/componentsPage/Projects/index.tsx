@@ -116,7 +116,7 @@ const Projects: React.FC<ProjectsProps> = ({ limit = 0, page }) => {
                     ? `${project.url.slice(0, 30)}...`
                     : project.url)
                   : 
-                    <span className="text-base text-red-600"> (Internal / Private Project) </span>
+                    <span className="md:text-base text-sm text-red-600"> (Internal / Private Project) </span>
                 }
                 {project.url && <span className="inline-block">&#8594;</span>}
               </div>
