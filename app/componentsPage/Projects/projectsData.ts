@@ -14,7 +14,7 @@ const LSP = '/assets/portfolio/lsp/lsp.jpg';
 const DistributionAPP = '/assets/portfolio/distribusi/distribusi.jpg';
 const webBoh = '/assets/portfolio/weboh/weboh.jpg';
 const Receiving = '/assets/portfolio/receiving/receiving.jpg';
-const BMovie = '/assets/portfolio/BmovieInfo/Bmovie.png';
+const BMovie = '/assets/portfolio/BmovieInfo/Bmovie2.png';
 const Soundbox = ' /assets/portfolio/soundbox/soundbox01.png';
 
 
