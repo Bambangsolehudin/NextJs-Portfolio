@@ -1,5 +1,5 @@
-// app/page.tsx
 "use client";
+// app/page.tsx
 
 // import Image from "next/image";
 // import Lanyard from "./components/Lanyard/Lanyard";
@@ -17,14 +17,27 @@
 // import Navbar from "./componentsPage/Navbar";
 
 
-import Services from "./componentsPage/Services/Services";
-import About from "./componentsPage/About";
-import Projects from "./componentsPage/Projects";
-import Hero from "./componentsPage/Hero";
-import Contact from "./componentsPage/Contact";
 
 import { useRef, useCallback } from "react"; // Tambahkan ini
 import ScrollVelocity from "./components/ScrollVelocity/ScrollVelocity";
+import dynamic from "next/dynamic";
+
+
+const Services = dynamic(() => import('./componentsPage/Services/Services'), {
+  ssr: false,
+})
+const About = dynamic(() => import('./componentsPage/About'), {
+  ssr: false,
+})
+const Projects = dynamic(() => import('./componentsPage/Projects'), {
+  ssr: false,
+})
+const Hero = dynamic(() => import('./componentsPage/Hero'), {
+  ssr: false,
+})
+const Contact = dynamic(() => import('./componentsPage/Contact'), {
+  ssr: false,
+})
 
 
 export default function Home() {

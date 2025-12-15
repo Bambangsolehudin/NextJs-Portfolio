@@ -1,5 +1,11 @@
+"use client";
+
 import React from 'react'
-import About from '../componentsPage/About'
+import dynamic from 'next/dynamic';
+
+const About = dynamic(() => import('./../componentsPage/About'), {
+  ssr: false,
+})
 
 export default function page() {
   return (
