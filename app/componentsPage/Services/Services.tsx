@@ -29,7 +29,7 @@ const Services = () => {
   return (
     <section className="container mx-auto px-4 md:px-0">
       <div className="grid gap-6 md:grid-cols-3 relative">
-        <span className="text-base pb-2 border-b block md:hidden w-fit">Expertise</span>
+        <span className="text-base text-white pb-2 border-b block md:hidden w-fit">Expertise</span>
         {services.map(({ icon, title, description }, i) => (
           <MotionWrapper key={title} variants={fadeInUp} delay={i * 0.2}>
             <div

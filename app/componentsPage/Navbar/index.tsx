@@ -37,15 +37,13 @@ const Navbar = () => {
   const isHome = pathname === "/";
   const isHeroTransparent = isHome && !isScrolled;
 
-  const navPositionClasses = isHeroTransparent
-    ? "relative md:absolute md:top-0 md:left-0"
-    : "fixed top-0 left-0";
+  const navPositionClasses = "fixed top-0 left-0";
 
   const navBgClasses = isHeroTransparent
-    ? "bg-black/10 md:bg-transparent text-white backdrop-blur-sm"
+    ? "md:bg-transparent bg-transparent md:shadow-none shadow-2xl backdrop-blur-xl text-white md:backdrop-blur-md"
     : isScrolled
     ? "bg-black/40 text-white shadow-2xl backdrop-blur-xl border-b border-white/10"
-    : "bg-[var(--background)] text-[color:var(--foreground)] shadow";
+    : "bg-black/90 md:bg-[var(--background)] text-white md:text-[color:var(--foreground)] shadow";
 
   const linkBaseClasses =
     "relative inline-block transition-colors duration-300 group focus:outline-none";

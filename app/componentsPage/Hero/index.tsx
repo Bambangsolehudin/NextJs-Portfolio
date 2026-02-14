@@ -71,7 +71,7 @@ export default function Hero({scrollToContact}: any) {
           /> */}
       </div>
       
-      <div className="container mx-auto px-4 md:h-screen h-[50vh]">
+      <div className="container mx-auto px-4 pt-16 md:pt-0 md:h-screen h-[50vh]">
         <div className="grid grid-cols-12 px-4">
           <div className="md:col-span-6 col-span-12">
              <div className="flex items-center h-full pt-4">

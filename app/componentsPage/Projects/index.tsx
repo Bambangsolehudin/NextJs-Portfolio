@@ -8,6 +8,7 @@ import SplitText from "@/app/components/SplitText/SplitText";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa";
+import { Router } from "next/router";
 
 type TechIcons = {
   HTML: string;
@@ -53,16 +54,17 @@ const Projects: React.FC<ProjectsProps> = ({ limit = 0, page }) => {
   const pathname = usePathname();
 
   return (
-    <div className={`md:max-w-full max-w-4xl py-10 mx-auto text-zinc-300 `}>
+    <div className={`md:max-w-full py-10 mx-auto text-zinc-300 `}>
       <div className="pb-4 mb-6">
-        <SplitText 
+        {/* <SplitText 
           text="Projects"
-          className="md:text-xl border-b first-letter:xl text-base font-semibold text-start text-gray-100 pb-2"
+          className={`md:text-xl md:bl border-b first-letter:xl text-base text-white text-start text-gray-100 pb-2`}
           delay={20}
           animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
           animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
           threshold={0.2}
-        />
+        /> */}
+        <p className="md:text-xl border-b w-fit first-letter:xl text-base text-start text-gray-100 pb-2">Projects</p>
       </div>
 
     
