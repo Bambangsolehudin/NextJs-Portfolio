@@ -59,11 +59,11 @@ const About = ({page}: {page:string}) => {
 
   return (
     <div className="">
-     <div className="relative pb-4 mb-6">
+     <div className="relative pb-4 mb-6 ">
       {/* Background Ribbons */}
         <SplitText 
           text="About"
-          className="md:text-xl md:w-fit border-b  text-2xl font-semibold text-start text-gray-100 pb-2"
+          className="  md:text-xl md:w-fit border-b  text-base font-semibold text-gray-100 pb-2"
           delay={10}
           animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
           animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
@@ -82,9 +82,9 @@ const About = ({page}: {page:string}) => {
               transition={{ delay: 1 * 0.1, duration: 0.6 }}
               className=""
             >
-              <div className={` ${page == 'about' ? 'md:px-4': 'px-4'}`}>
+              <div className={` ${page == 'about' ? 'md:px-4': 'px-0'}`}>
                 <div className={`flex ${page == 'about' ? 'md:flex-col' : 'md:flex-row'}  flex-col justify-center items-center md:gap-10 gap-4`}>
-                  <div className="flex gap-6 items-center">
+                  <div className="flex md:flex-row flex-col gap-6 items-center">
                     <div className={`${page == 'about' ? 'block' : 'hidden'}`}>
                       <PixelTransition
                           firstContent={
@@ -139,7 +139,7 @@ const About = ({page}: {page:string}) => {
                         delay={2}
                         animateBy="words"
                         direction="top"
-                        className="text-zinc-200 pb-5 text-sm md:text-2xl text-justify "
+                        className="text-zinc-200 md:pb-5 text-sm md:text-2xl text-justify "
                       />
                       <BlurText 
                         text="with a strong focus on frontend development, 
@@ -150,7 +150,7 @@ const About = ({page}: {page:string}) => {
                         delay={2}
                         animateBy="words"
                         direction="top"
-                        className="text-zinc-400 pb-5 text-xs md:text-sm text-justify "
+                        className="text-zinc-400 pb-5 text-sm md:text-sm text-justify "
                       />
                       <div className="text-yellow-500 flex items-center gap-1 mb-5 text-xs md:text-sm">
                         <IoMdPin /> <BlurText text="Bogor, Indonesia" delay={10} animateBy="words" direction="top" className="text-yellow-500" />
@@ -159,7 +159,7 @@ const About = ({page}: {page:string}) => {
                   </div>
                   {/* Skills */}
                   <div className="">
-                    <span className="md:text-xl text-sm flex gap-4 border-b md:w-fit text-zinc-100 font-light mb-4 pb-2">
+                    <span className="md:text-xl text-sm w-fit flex gap-4 border-b md:w-fit text-zinc-100 font-light mb-4 pb-2">
                       Skills
                     </span>
 
@@ -256,10 +256,13 @@ const About = ({page}: {page:string}) => {
                     </div>
                   
                     <div className="py-6">
-                       <h2 className="md:text-base border-b text-sm font-light text-gray-50 w-fit mb-4 pb-2 px-0">
+                       <h2 className="text-sm border-b w-fit text-gray-50 mb-4 pb-2 px-0">
                         Experience
                       </h2>
+                      <div className="px-4">
                       <Journey headerNo={true} />
+
+                      </div>
 
                     </div>
                   </>

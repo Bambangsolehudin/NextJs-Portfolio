@@ -10,7 +10,7 @@ const About = dynamic(() => import('./../componentsPage/About'), {
 export default function page() {
   return (
     <div className="container md:px-28 px-4 mx-auto">
-        <section className="mt-10">
+        <section className="mt-28 md:mt-10 ">
           <About page="about" />
         </section>
     </div>

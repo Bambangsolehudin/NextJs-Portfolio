@@ -29,12 +29,13 @@ const Services = () => {
   return (
     <section className="container mx-auto px-4 md:px-0">
       <div className="grid gap-6 md:grid-cols-3 relative">
+        <span className="text-base pb-2 border-b block md:hidden w-fit">Expertise</span>
         {services.map(({ icon, title, description }, i) => (
           <MotionWrapper key={title} variants={fadeInUp} delay={i * 0.2}>
             <div
               className="
                 group
-                h-80
+                h-40 md:h-80
                 bg-gray-700
                 border border-gray-600
                 shadow-md
@@ -48,10 +49,10 @@ const Services = () => {
                 <span>{icon}</span>
 
                 <div className="text-left">
-                  <h3 className="text-2xl font-semibold mb-2 text-zinc-200 group-hover:text-white transition-colors">
+                  <h3 className="text-base  md:text-2xl font-semibold mb-2 text-zinc-200 group-hover:text-white transition-colors">
                     {title}
                   </h3>
-                  <p className="text-sm text-zinc-400 group-hover:text-white transition-colors">
+                  <p className="text-xs md:text-sm text-zinc-400 group-hover:text-white transition-colors">
                     {description}
                   </p>
                 </div>

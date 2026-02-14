@@ -65,7 +65,7 @@ export default function Home() {
 
 
         <section className="About md:px-28 bg-gray-800 relative w-full mt-10">
-          <div className="container mx-auto px-4 py-20 md:pt-40 md:pb-60">
+          <div className="container mx-auto px-4 py-10 md:py-20 md:pt-40 md:pb-60">
             <About page="home" />
           </div>
         </section>
@@ -75,11 +75,11 @@ export default function Home() {
             <Services />
           </section>
 
-          <section className="project mt-10 bg-gray-800 md:px-28">
+          <section className="project mt-10 bg-gray-800 md:px-28 px-2">
             <Projects page="home" limit={4} />
           </section>
 
-          <section className="contact md:px-28 mt-10" ref={contactRef}>
+          <section className="contact md:px-28 px-2 mt-10" ref={contactRef}>
             <Contact  />
           </section>
 

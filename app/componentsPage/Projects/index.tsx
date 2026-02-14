@@ -54,10 +54,10 @@ const Projects: React.FC<ProjectsProps> = ({ limit = 0, page }) => {
 
   return (
     <div className={`md:max-w-full max-w-4xl py-10 mx-auto text-zinc-300 `}>
-      <div className=" pb-4 mb-6">
+      <div className="pb-4 mb-6">
         <SplitText 
           text="Projects"
-          className="md:text-xl border-b first-letter:xl text-2xl font-semibold text-start text-gray-100 pb-2"
+          className="md:text-xl border-b first-letter:xl text-base font-semibold text-start text-gray-100 pb-2"
           delay={20}
           animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
           animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
