@@ -58,13 +58,13 @@ const About = ({page}: {page:string}) => {
 
 
   return (
-    <>
-     <div className="relative border-b pb-4  border-zinc-700 mb-6">
+    <div className="">
+     <div className="relative pb-4 mb-6">
       {/* Background Ribbons */}
         <SplitText 
-          text="About Me"
-          className="md:text-3xl text-2xl font-semibold text-start text-gray-100 pb-6"
-          delay={75}
+          text="About"
+          className="md:text-xl md:w-fit border-b  text-2xl font-semibold text-start text-gray-100 pb-2"
+          delay={10}
           animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
           animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
           threshold={0.2}
@@ -73,21 +73,6 @@ const About = ({page}: {page:string}) => {
       </div>
 
       <div className="">
-        {/* Title */}
-        {/* <div className="grid grid-cols-12 gap-4"> */}
-          {/* Mobile image */}
-          {/* <div className="col-span-3 lg:hidden">
-            <img
-              src={MyPic as any}
-              alt="Profile"
-              className="w-full h-auto object-cover rounded-lg"
-            />
-          </div>
-        </div> */}
-
-        {/* Background */}
-
-     
           <div className="pb-5 md:pt-5 flex gap-10 md:flex-row flex-col">
             <MotionWrapper
               variants={slideInRight}
@@ -97,109 +82,117 @@ const About = ({page}: {page:string}) => {
               transition={{ delay: 1 * 0.1, duration: 0.6 }}
               className=""
             >
-              <div className={`${page == 'about' ? 'md:px-4': 'px-0'}`}>
-
-                
-                <div className="flex md:flex-row flex-col justify-center items-center md:gap-10 gap-4">
-                  <div className={`${page == 'about' ? 'block' : 'hidden'}`}>
-                     <PixelTransition
-                        firstContent={
-                          <img
-                            src="/assets/profile.jpg"
-                            alt="default pixel transition content, a cat!"
-                            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                          />
-                        }
-                        secondContent={
-                          <div
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              display: "grid",
-                              placeItems: "center",
-                              backgroundColor: "#111"
+              <div className={` ${page == 'about' ? 'md:px-4': 'px-4'}`}>
+                <div className={`flex ${page == 'about' ? 'md:flex-col' : 'md:flex-row'}  flex-col justify-center items-center md:gap-10 gap-4`}>
+                  <div className="flex gap-6 items-center">
+                    <div className={`${page == 'about' ? 'block' : 'hidden'}`}>
+                      <PixelTransition
+                          firstContent={
+                            <img
+                              src="/assets/profile.jpg"
+                              alt="default pixel transition content, a cat!"
+                              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                            />
+                          }
+                          secondContent={
+                            <div
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                                display: "grid",
+                                placeItems: "center",
+                                backgroundColor: "#111"
+                              }}
+                            >
+                              <p style={{ fontWeight: 900, fontSize: "3rem", color: "#ffffff" }}>
+                                Hello I am Bambang
+                              </p>
+                            </div>
+                          }
+                          gridSize={12}
+                          pixelColor='#ffffff'
+                          once={false}
+                          animationStepDuration={0.4}
+                          className="custom-pixel-card"
+                        />
+                          {/* <ProfileCard
+                            className="w-[1px] h-[1px]"
+                            name="Bambang"
+                            title="FE Developer"
+                            handle="karirs.bambang@gmail.com"
+                            status="Online"
+                            contactText=""
+                            avatarUrl="/assets/About/profileFoto.png"
+                            showUserInfo={true}
+                            enableTilt={true}
+                            enableMobileTilt={true}
+                            onContactClick={() => {
+                              window.location.href = "mailto:karirs.bambang@gmail.com";
                             }}
-                          >
-                            <p style={{ fontWeight: 900, fontSize: "3rem", color: "#ffffff" }}>
-                              Hello !
-                            </p>
-                          </div>
-                        }
-                        gridSize={12}
-                        pixelColor='#ffffff'
-                        once={false}
-                        animationStepDuration={0.4}
-                        className="custom-pixel-card"
-                      />
-                        {/* <ProfileCard
-                          className="w-[1px] h-[1px]"
-                          name="Bambang"
-                          title="FE Developer"
-                          handle="karirs.bambang@gmail.com"
-                          status="Online"
-                          contactText=""
-                          avatarUrl="/assets/About/profileFoto.png"
-                          showUserInfo={true}
-                          enableTilt={true}
-                          enableMobileTilt={true}
-                          onContactClick={() => {
-                            window.location.href = "mailto:karirs.bambang@gmail.com";
-                          }}
-                        /> */}
-                  </div>
+                          /> */}
+                    </div>
 
-                  <div>
-                    <BlurText 
-                      text="Software Developer with a strong focus on frontend development, 
-                      experienced in building responsive and high-performance web and mobile applications using Vue.js, Nuxt.js, React.js, and React Native. Proficient in developing scalable user interfaces and integrating RESTful APIs. Possesses basic backend knowledge with Express.js, 
-                      Laravel, and SQL. Committed to continuous learning and creating user-focused digital solutions.
-                      "
-                      delay={10}
-                      animateBy="words"
-                      direction="top"
-                      className="text-zinc-400 pb-5 md:text-lg text-base text-justify"
-                    />
-                    <div className="text-zinc-500 flex items-center gap-1 mb-5 text-xs lg:text-sm xl:text-base 2xl:text-lg">
-                      <IoMdPin /> <BlurText text="Bogor, Indonesia" delay={10} animateBy="words" direction="top" className="text-zinc-500" />
+                    <div>
+                      <BlurText 
+                        text="Software Developer
+                        "
+                        delay={2}
+                        animateBy="words"
+                        direction="top"
+                        className="text-zinc-200 pb-5 text-sm md:text-2xl text-justify "
+                      />
+                      <BlurText 
+                        text="with a strong focus on frontend development, 
+                        experienced in building responsive and high-performance web and mobile applications using Vue.js, Nuxt.js, React.js, 
+                        and React Native. Proficient in developing scalable user interfaces and integrating RESTful APIs. 
+                        Possesses basic backend knowledge with Express.js, Laravel, and SQL. Committed to continuous learning and creating user-focused digital solutions.
+                        "
+                        delay={2}
+                        animateBy="words"
+                        direction="top"
+                        className="text-zinc-400 pb-5 text-xs md:text-sm text-justify "
+                      />
+                      <div className="text-yellow-500 flex items-center gap-1 mb-5 text-xs md:text-sm">
+                        <IoMdPin /> <BlurText text="Bogor, Indonesia" delay={10} animateBy="words" direction="top" className="text-yellow-500" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Skills */}
+                  <div className="">
+                    <span className="md:text-xl text-sm flex gap-4 border-b md:w-fit text-zinc-100 font-light mb-4 pb-2">
+                      Skills
+                    </span>
+
+                    <div className="flex flex-wrap gap-3 md:px-6 md:py-4 border rounded-md border-zinc-700 p-4 mt-4">
+                      {Object.values(techIcons as Record<string, TechIcon>).map(
+                        (tech, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center gap-2 md:px-3 py-1 bg-zinc-800 border border-zinc-700 rounded-md hover:scale-105 transition"
+                          >
+                            <img
+                              src={tech.url}
+                              alt={tech.name}
+                              className="w-5 h-5 lg:w-6 lg:h-6 object-contain"
+                            />
+                            <span className="text-xs lg:text-sm text-gray-300 font-medium">
+                              {tech.name}
+                            </span>
+                          </div>
+                        )
+                      )}
                     </div>
                   </div>
                 </div>
-               
 
 
-                {/* Skills */}
-                <div className="py-6">
-                  <span className="md:text-2xl text-xl flex gap-4 border-b border-zinc-700 text-gray-50 font-light mb-4 pb-2">
-                    Skills
-                  </span>
-
-                  <div className="flex flex-wrap gap-3 md:px-6">
-                    {Object.values(techIcons as Record<string, TechIcon>).map(
-                      (tech, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center gap-2 md:px-3 py-1 bg-zinc-800 border border-zinc-700 rounded-md hover:scale-105 transition"
-                        >
-                          <img
-                            src={tech.url}
-                            alt={tech.name}
-                            className="w-5 h-5 lg:w-6 lg:h-6 object-contain"
-                          />
-                          <span className="text-xs lg:text-sm text-gray-300 font-medium">
-                            {tech.name}
-                          </span>
-                        </div>
-                      )
-                    )}
-                  </div>
-                </div>
 
                 {
                   page !== "about" && 
-                  <div className="flex justify-center">
+                  <div className="flex justify-center md:justify-normal md:flex-row-reverse">
                     <div 
                       onClick={() => router?.push('/about')}
-                      className="text-zinc-400 mt-10 cursor-pointer flex items-center gap-1 mb-5 text-xs md:text-xl">
+                      className="text-yellow-500 underline underline-offset-8   mt-16 cursor-pointer flex items-center gap-1 mb-5 text-xs md:text-base">
                       <span>Load More {'    '}</span> <FaArrowRight className="animate-moveRight" />
                     </div>
                   </div>
@@ -211,7 +204,7 @@ const About = ({page}: {page:string}) => {
                     
                     {/* Certifications */}
                     <div className="py-6">
-                      <h2 className="text-xl font- border-b border-zinc-700 text-gray-50 mb-4 pb-2 px-0">
+                      <h2 className="text-sm border-b w-fit text-gray-50 mb-4 pb-2 px-0">
                         Certifications
                       </h2>
 
@@ -246,7 +239,7 @@ const About = ({page}: {page:string}) => {
                                         </h3>
                                         <IoIosArrowForward className="text-zinc-500 group-hover:text-zinc-300 group-hover:translate-x-1 transition" />
                                       </div>
-                                      <p className="text-xs lg:text-sm text-zinc-500">
+                                      <p className="text-xs md:text-sm text-zinc-500">
                                         {item.institution} | {item.date}
                                       </p>
                                     </div>
@@ -263,7 +256,7 @@ const About = ({page}: {page:string}) => {
                     </div>
                   
                     <div className="py-6">
-                       <h2 className="md:text-2xl text-xl font-light text-gray-50 border-b border-zinc-700 mb-4 pb-2 px-0">
+                       <h2 className="md:text-base border-b text-sm font-light text-gray-50 w-fit mb-4 pb-2 px-0">
                         Experience
                       </h2>
                       <Journey headerNo={true} />
@@ -275,29 +268,7 @@ const About = ({page}: {page:string}) => {
               </div>
             </MotionWrapper>
 
-           
 
-
-            
-
-          
-
-            {/* <div className="hidden md:w-[50%] md:block relative">
-              <ProfileCard
-                name="Bambang Solehudin"
-                title="Frontend Developer"
-                handle="karirs.bambang@gmail.com"
-                status="Online"
-                contactText=""
-                avatarUrl="/assets/About/profileFoto.png"
-                showUserInfo={true}
-                enableTilt={true}
-                enableMobileTilt={true}
-                onContactClick={() => {
-                  window.location.href = "mailto:karirs.bambang@gmail.com";
-                }}
-              />
-            </div> */}
           </div>
         
 
@@ -306,7 +277,7 @@ const About = ({page}: {page:string}) => {
         
 
       </div>
-    </>
+    </div>
   );
 };
 

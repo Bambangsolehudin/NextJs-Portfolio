@@ -3,10 +3,8 @@ import Projects from '../componentsPage/Projects'
 
 export default function page() {
   return (
-    <div className="container md:px-10 px-4 mx-auto">
-        <section className="mt-10">
-          <Projects />
-        </section>
+    <div className="container md:px-28 px-4 md:mt-20 mx-auto">
+        <Projects />
     </div>
   )
 }

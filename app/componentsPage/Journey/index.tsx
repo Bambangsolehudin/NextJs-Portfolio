@@ -52,7 +52,7 @@ const Journey: React.FC<JourneyProps> = ({ limit, headerNo, }) => {
             <div key={index} className="flex items-start md:gap-6">
               
               {/* Year */}
-              <div className="w-auto text-left text-2xl sm:text-2xl md:text-2xl lg:text-3xl font-light text-zinc-300">
+              <div className="w-auto text-left text-sm  md:text-base font-light text-zinc-300">
                 {entry.year}
               </div>
 
@@ -94,13 +94,13 @@ const Journey: React.FC<JourneyProps> = ({ limit, headerNo, }) => {
                         )}
 
                         {/* Title */}
-                        <div className="text-md md:text-md lg:text-xl text-zinc-300">
+                        <div className="text-md md:text-base text-zinc-300">
                           {event.title}
                         </div>
 
                         {/* Description (HTML safe) */}
                         <div
-                          className="text-sm lg:text-base text-zinc-400"
+                          className="text-sm md:text-sm text-zinc-400"
                           dangerouslySetInnerHTML={{ __html: event.description }}
                         />
                       </MotionWrapper>

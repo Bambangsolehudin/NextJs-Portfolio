@@ -1,71 +1,165 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
-import { techIcons } from '../Projects/projectsData';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname, useRouter } from "next/navigation";
+import { techIcons } from "../Projects/projectsData";
 
 const Logo = techIcons?.ReactJS;
 
+const links = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Projects", path: "/projects" },
+];
 
 const Navbar = () => {
- 
-
   const router = useRouter();
-  const pathname = usePathname()
+  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // console.log('params', pathname);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolledPastHero = window.scrollY > window.innerHeight * 0.6;
+      setIsScrolled(scrolledPastHero || pathname !== "/");
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  const isHome = pathname === "/";
+  const isHeroTransparent = isHome && !isScrolled;
+
+  const navPositionClasses = isHeroTransparent
+    ? "relative md:absolute md:top-0 md:left-0"
+    : "fixed top-0 left-0";
+
+  const navBgClasses = isHeroTransparent
+    ? "bg-transparent text-white"
+    : isScrolled
+    ? "bg-black/40 text-white shadow-2xl backdrop-blur-xl border-b border-white/10"
+    : "bg-[var(--background)] text-[color:var(--foreground)] shadow";
+
+  const linkBaseClasses =
+    "relative inline-block transition-colors duration-300 group focus:outline-none";
+
+  const desktopLinkColor = isHeroTransparent || isScrolled
+    ? "text-white"
+    : "text-[color:var(--foreground)]";
+
+  const handleNavigate = (path: string) => {
+    router.push(path);
+  };
 
   return (
-    <nav className={`${pathname == '/' ? 'md:-top-2 md:absolute md:bg-black/20 bg-black/90' : '-top-0 bg-[#1c1c1c]'}  shadow  w-full px-6 z-40 pt-2  `}>
-      <div className="md:min-w-full max-w-4xl mx-auto px-5">
-        <div className="flex justify-between items-center h-16">
-          <div className='hiden md:block' onClick={() => router?.push("/")}>
-            <img className="h-8 cursor-pointer" src={Logo} alt="logo" />
+    <nav
+      className={`${navPositionClasses} ${navBgClasses} w-full z-50 py-3 md:py-4 transition-all duration-500`}
+    >
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="relative">
+          <div className="flex justify-between items-center h-14 md:h-16">
+            <button
+              type="button"
+              className="flex items-center"
+              onClick={() => handleNavigate("/")}
+            >
+              {Logo && <img className="h-8" src={Logo} alt="logo" />}
+              <span className="sr-only">Go to homepage</span>
+            </button>
+            <div className="hidden md:flex items-center md:space-x-6 text-xs md:text-base">
+              {links.map(({ label, path }) => {
+                const isActive = pathname === path;
+                return (
+                  <button
+                    type="button"
+                    key={path}
+                    onClick={() => handleNavigate(path)}
+                    className={`${linkBaseClasses} ${desktopLinkColor} ${
+                      isActive
+                        ? "opacity-100"
+                        : isScrolled
+                        ? "opacity-60 hover:opacity-100"
+                        : "opacity-70 hover:opacity-100"
+                    }`}
+                  >
+                    <span className="relative z-10">{label}</span>
+                    <span
+                      className={`absolute bottom-0 left-1/2 h-0.5 w-0 bg-current transition-all duration-300 transform -translate-x-1/2 ${
+                        isActive ? "w-full" : "group-hover:w-full"
+                      }`}
+                    ></span>
+                  </button>
+                );
+              })}
+            </div>
+            <button
+              type="button"
+              className={`md:hidden relative w-11 h-11 flex flex-col justify-center items-center gap-1.5 rounded-full border transition-colors ${
+                isHeroTransparent || isScrolled
+                  ? "border-white/40 text-white"
+                  : "border-black/10 text-[color:var(--foreground)]"
+              }`}
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              aria-label="Toggle navigation"
+              aria-expanded={isMenuOpen}
+            >
+              <span
+                className={`block h-0.5 w-5 bg-current transition-transform duration-300 ${
+                  isMenuOpen ? "translate-y-1.5 rotate-45" : ""
+                }`}
+              ></span>
+              <span
+                className={`block h-0.5 w-5 bg-current transition-opacity duration-300 ${
+                  isMenuOpen ? "opacity-0" : "opacity-80"
+                }`}
+              ></span>
+              <span
+                className={`block h-0.5 w-5 bg-current transition-transform duration-300 ${
+                  isMenuOpen ? "-translate-y-1.5 -rotate-45" : ""
+                }`}
+              ></span>
+            </button>
           </div>
-          <div className="items-center md:space-x-5 space-x-4 text-xs md:text-lg">
-          <div
-              onClick={() => router?.push("/")}
-              // href="/"
-              className={`relative inline-block cursor-pointer  transition-colors group ${
-                pathname == '/' ? 'text-white border-b border-white' : 'hover:text-zinc-400 text-gray-300'
-              }`}
-            >
-              <span className="relative z-10">Home</span>
-              <span
-                className={`absolute cursor-pointer bottom-0 left-1/2 h-0.5 w-0 bg-gray-300 transition-all duration-300 transform -translate-x-1/2 ${
-                  pathname == '/' ? 'w-full text-white border-b border-white' : 'group-hover:w-full'
-                }`}
-              ></span>
-            </div>
+          {isMenuOpen && (
             <div
-              onClick={() => router?.push("/about")}
-              className={`relative cursor-pointer inline-block  transition-colors group ${
-                pathname == '/about' ? 'text-white border-b border-white' : 'hover:text-zinc-400 text-gray-200'
+              className={`md:hidden absolute left-0 right-0 mt-4 flex flex-col space-y-2 rounded-2xl border px-5 py-5 text-base shadow-2xl backdrop-blur ${
+                isHeroTransparent
+                  ? "bg-black/70 text-white border-white/10"
+                  : isScrolled
+                  ? "bg-black/85 text-white border-white/10"
+                  : "bg-[var(--background)]/95 text-[color:var(--foreground)] border-black/5"
               }`}
             >
-              <span className="relative z-10">About</span>
-              <span
-                className={`absolute bottom-0 left-1/2 h-0.5 w-0 bg-gray-300 transition-all duration-300 transform -translate-x-1/2 ${
-                  pathname == '/about' ? 'w-full' : 'group-hover:w-full'
-                }`}
-              ></span>
+              {links.map(({ label, path }) => {
+                const isActive = pathname === path;
+                return (
+                  <button
+                    type="button"
+                    key={`${path}-mobile`}
+                    onClick={() => handleNavigate(path)}
+                    className={`text-left px-3 py-2 rounded-xl transition-colors ${
+                      isActive
+                        ? isHeroTransparent || isScrolled
+                          ? "bg-white/10 text-white"
+                          : "bg-black/5"
+                        : isHeroTransparent || isScrolled
+                        ? "text-white/70 hover:bg-white/5"
+                        : "opacity-80 hover:opacity-100"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
             </div>
-            <div
-              onClick={() => router?.push("/projects")}
-              // href="/projects"
-              className={`relative cursor-pointer inline-block text-gray-300 transition-colors group ${
-                pathname == '/projects' ? 'text-white border-b border-white' : 'hover:text-zinc-400'
-              }`}
-            >
-              <span className="relative z-10">Projects</span>
-              <span
-                className={`absolute bottom-0 left-1/2 h-0.5 w-0 bg-gray-300 transition-all duration-300 transform -translate-x-1/2 ${
-                  pathname == '/projects' ? 'w-full' : 'group-hover:w-full'
-                }`}
-              ></span>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </nav>

@@ -53,41 +53,39 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      
-        <Hero scrollToContact={scrollToContact} />
+    <div className="">
+        <div className="md:px-28">
+          <Hero scrollToContact={scrollToContact} />
+        </div>
 
-
-        <ScrollVelocity 
+        {/* <ScrollVelocity 
           className="text-clip"
           texts={[ 'JavaScript' ]} 
-        />
+        /> */}
 
 
-        <div className="container md:px-10 px-4 mx-auto min-h-screen">
-          {/* Services */}
-
-          <section className="About mt-10">
+        <section className="About md:px-28 bg-gray-800 relative w-full mt-10">
+          <div className="container mx-auto px-4 py-20 md:pt-40 md:pb-60">
             <About page="home" />
-          </section>
+          </div>
+        </section>
 
-          <section className="services mt-10">
+        <div className="mx-auto min-h-screen">
+          <section className="md:px-28 md:pb-40 services mt-20 md:-mt-36 ">
             <Services />
           </section>
 
-          <section className="project mt-10">
+          <section className="project mt-10 bg-gray-800 md:px-28">
             <Projects page="home" limit={4} />
           </section>
 
-          <section className="contact mt-10" ref={contactRef}>
+          <section className="contact md:px-28 mt-10" ref={contactRef}>
             <Contact  />
           </section>
 
 
-
-
         </div>
      
-    </>
+    </div>
   );
 }

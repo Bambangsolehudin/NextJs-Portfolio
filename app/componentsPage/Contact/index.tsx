@@ -12,57 +12,35 @@ import PlainMail from "/public/assets/Airmails/plainMail.png";
 import BlurText from '@/app/components/BlurText/BlurText';
 import { FaDochub } from 'react-icons/fa';
 
-// Asumsi BlurText adalah komponen React yang memiliki properti yang didefinisikan
-
-// --- TYPE DEFINITIONS (Interfaces) ---
-
-/**
- * Interface untuk struktur data di mailData.
- */
 interface MailItem {
   id: number | string;
   title: string;
   date: string;
-  preview: string; // URL/Path ke gambar pratinjau email
-  // Tambahkan properti lain yang ada di mailData jika diperlukan
+  preview: string; 
 }
 
-/**
- * Interface untuk struktur data di socialLinks.
- */
+
 interface SocialLink {
   url: string;
   coloredIcon: string;
   name: string;
-  // Tambahkan properti lain yang ada di socialLinks jika diperlukan
 }
 
-// Asumsi tipe untuk `iconMap` adalah Record<string, string> (map dari string ke string/path)
 const iconMapTyped: Record<string, string> = iconMap as Record<string, string>;
-// Asumsi tipe untuk `mailData` adalah array dari MailItem
 const mailDataTyped: MailItem[] = mailData as any[];
-// Asumsi tipe untuk `socialLinks` adalah array dari SocialLink
 const socialLinksTyped: SocialLink[] = socialLinks as SocialLink[];
 
 // --- REACT COMPONENT ---
-
 const Contact = () => {
-  // Tipe untuk state activeTab adalah string, dan hanya boleh 'social' atau 'mail'
   const [activeTab, setActiveTab] = useState<'social' | 'mail'>('social'); 
-  // Tipe untuk state hoveredMailId adalah number/string (berdasarkan id MailItem) atau null
   const [hoveredMailId, setHoveredMailId] = useState<MailItem['id'] | null>(null);
-  // Tipe untuk state openedMail adalah MailItem atau null
   const [openedMail, setOpenedMail] = useState<MailItem | null>(null);
 
-  // Fungsi penanganan event tanpa tipe kembalian
   const handleAnimationComplete = (): void => {
-    // console.log("BlurText animation complete");
   }
 
-  // Fungsi untuk membuka mail, menerima argumen bertipe MailItem
   const openMail = (mail: MailItem): void => setOpenedMail(mail);
   
-  // Fungsi untuk menutup mail
   const closeMail = (): void => setOpenedMail(null);
 
   const handleDownloadCv = () => {
@@ -84,7 +62,7 @@ const Contact = () => {
   };
 
   return (
-    <div className=" md:max-w-full max-w-4xl px-4 py-8 mx-auto">
+    <div className=" md:max-w-full py-8 mx-auto">
     
       {/* Tabs */}
       <div className="flex space-x-4 mb-6 border-b border-zinc-700">
@@ -160,7 +138,6 @@ const Contact = () => {
           </div>
       
           {/* Will modify this into an image in the future :)) */}
-
           <div className="py-10 bg-neutral-800 ">
               <div className="flex flex-col gap-3 items-center">
                <div className="flex items-center gap-2 bg-green-600/10 px-4 py-2 rounded-full">

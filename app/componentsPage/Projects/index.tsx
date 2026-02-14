@@ -7,6 +7,7 @@ import { fadeInUp } from "@/app/utils/motionVariants";
 import SplitText from "@/app/components/SplitText/SplitText";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { FaArrowRight } from "react-icons/fa";
 
 type TechIcons = {
   HTML: string;
@@ -53,15 +54,14 @@ const Projects: React.FC<ProjectsProps> = ({ limit = 0, page }) => {
 
   return (
     <div className={`md:max-w-full max-w-4xl py-10 mx-auto text-zinc-300 `}>
-      <div className="border-b  border-zinc-700 pb-4 mb-6">
+      <div className=" pb-4 mb-6">
         <SplitText 
           text="Projects"
-          className="md:text-3xl text-2xl font-semibold text-start text-gray-100 pb-6"
-          delay={75}
+          className="md:text-xl border-b first-letter:xl text-2xl font-semibold text-start text-gray-100 pb-2"
+          delay={20}
           animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
           animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
           threshold={0.2}
-          rootMargin="-50px"
         />
       </div>
 
@@ -95,16 +95,16 @@ const Projects: React.FC<ProjectsProps> = ({ limit = 0, page }) => {
                 {project.date}
               </div>
 
-              <div className="text-lg lg:text-xl font-semibold my-2 text-zinc-300">
+              <div className="text-lg md:text-base font-semibold my-2 text-zinc-300">
                 {project.title}
               </div>
 
-              <div className="text-sm lg:text-base text-zinc-300 mb-2">
+              <div className="text-sm md:text-sm text-zinc-300 mb-2">
                 {project.description}
               </div>
 
               <div
-                className="text-xs lg:text-base text-zinc-400 mb-2"
+                className="text-xs md:text-sm text-zinc-400 mb-2"
                 title={project.url}
               >
                 
@@ -158,8 +158,9 @@ const Projects: React.FC<ProjectsProps> = ({ limit = 0, page }) => {
         page == "home" &&
           <div 
             onClick={() => router?.push('/projects')}
-            className="flex justify-center rounded-xl px-6 py-4 mt-4 border bordder-zinc-700 hover:bg-white/10 cursor-pointer transition">
-            <p>See More..</p>
+            className="flex text-base items-center justify-center text-yellow-500 mt-10 cursor-pointer hover:text-yellow-400 transition-colors border-b border-yellow-500 hover:border-yellow-400  w-fit py-2 mx-auto">
+            <p> See More </p>
+            <FaArrowRight className="ml-2" />
           </div>
       }
 
