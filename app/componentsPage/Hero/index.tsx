@@ -35,14 +35,14 @@ export default function Hero({scrollToContact}: any) {
     <div className="">
       {/* <SplashCursor  /> */}
       <div className="absolute top-0 bg-transparent right-0 left-0 bottom-0 w-full md:h-full h-[50vh]">
-        {/* <Squares 
+        <Squares 
           speed={0.5} 
           squareSize={40}
           direction='diagonal' // up, down, left, right, diagonal
           borderColor='#F1FFB2'
           hoverFillColor='#C6F10E'
-        /> */}
-
+        />
+{/* 
           <Particles
             particleColors={["#ffffff"]}
             particleCount={200}
@@ -53,7 +53,7 @@ export default function Hero({scrollToContact}: any) {
             alphaParticles={false}
             disableRotation={false}
             pixelRatio={1}
-          />
+          /> */}
 
            {/* <Galaxy 
               mouseRepulsion
