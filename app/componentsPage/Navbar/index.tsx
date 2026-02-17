@@ -40,7 +40,7 @@ const Navbar = () => {
   const navPositionClasses = "fixed top-0 left-0";
 
   const navBgClasses = isHeroTransparent
-    ? "md:bg-transparent bg-transparent md:shadow-none shadow-2xl backdrop-blur-xl text-white md:backdrop-blur-md"
+    ? "bg-transparent text-white md:shadow-none shadow-2xl backdrop-blur-md md:backdrop-blur-none"
     : isScrolled
     ? "bg-black/40 text-white shadow-2xl backdrop-blur-xl border-b border-white/10"
     : "bg-black/90 md:bg-[var(--background)] text-white md:text-[color:var(--foreground)] shadow";

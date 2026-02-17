@@ -139,14 +139,11 @@ export default function Hero({scrollToContact}: any) {
                   /> */}
 
                    <BlurText 
-                    text="Frontend-focused Software Developer with 4 years of experience building responsive, 
-                      high-performance web and mobile apps using Vue.js, Nuxt.js, React.js, and React Native.
-                      Skilled in scalable UI development and RESTful API integration, with basic backend knowledge. Dedicated to continuous learning and user-centered solutions.
-                    "
+                    text="Software Developer Frontend-focused  with 4 years of experience."
                     delay={75}
                     animateBy="words"
                     direction="top"
-                    className="text-xs md:text-sm   text-white/70"
+                    className="text-xs md:text-xl text-white/80"
                   />
                   <span 
                     onClick={scrollToContact}
