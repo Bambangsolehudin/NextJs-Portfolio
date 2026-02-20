@@ -42,8 +42,8 @@ const Navbar = () => {
   const navBgClasses = isHeroTransparent
     ? "bg-transparent text-white md:shadow-none shadow-2xl backdrop-blur-md md:backdrop-blur-none"
     : isScrolled
-    ? "bg-black/40 text-white shadow-2xl backdrop-blur-xl border-b border-white/10"
-    : "bg-black/90 md:bg-[var(--background)] text-white md:text-[color:var(--foreground)] shadow";
+      ? "bg-black/40 text-white shadow-2xl backdrop-blur-xl border-b border-white/10"
+      : "bg-black/90 md:bg-[var(--background)] text-white md:text-[color:var(--foreground)] shadow";
 
   const linkBaseClasses =
     "relative inline-block transition-colors duration-300 group focus:outline-none";
@@ -79,19 +79,17 @@ const Navbar = () => {
                     type="button"
                     key={path}
                     onClick={() => handleNavigate(path)}
-                    className={`${linkBaseClasses} ${desktopLinkColor} ${
-                      isActive
+                    className={`${linkBaseClasses} ${desktopLinkColor} ${isActive
                         ? "opacity-100"
                         : isScrolled
-                        ? "opacity-60 hover:opacity-100"
-                        : "opacity-70 hover:opacity-100"
-                    }`}
+                          ? "opacity-60 hover:opacity-100"
+                          : "opacity-70 hover:opacity-100"
+                      }`}
                   >
                     <span className="relative z-10">{label}</span>
                     <span
-                      className={`absolute bottom-0 left-1/2 h-0.5 w-0 bg-current transition-all duration-300 transform -translate-x-1/2 ${
-                        isActive ? "w-full" : "group-hover:w-full"
-                      }`}
+                      className={`absolute bottom-0 left-1/2 h-0.5 w-0 bg-current transition-all duration-300 transform -translate-x-1/2 ${isActive ? "w-full" : "group-hover:w-full"
+                        }`}
                     ></span>
                   </button>
                 );
@@ -99,41 +97,36 @@ const Navbar = () => {
             </div>
             <button
               type="button"
-              className={`md:hidden relative w-11 h-11 flex flex-col justify-center items-center gap-1.5 rounded-full border transition-colors ${
-                isHeroTransparent || isScrolled
+              className={`md:hidden relative w-11 h-11 flex flex-col justify-center items-center gap-1.5 rounded-full border transition-colors ${isHeroTransparent || isScrolled
                   ? "border-white/40 text-white"
                   : "border-black/10 text-[color:var(--foreground)]"
-              }`}
+                }`}
               onClick={() => setIsMenuOpen((prev) => !prev)}
               aria-label="Toggle navigation"
               aria-expanded={isMenuOpen}
             >
               <span
-                className={`block h-0.5 w-5 bg-current transition-transform duration-300 ${
-                  isMenuOpen ? "translate-y-1.5 rotate-45" : ""
-                }`}
+                className={`block h-0.5 w-5 bg-current transition-transform duration-300 ${isMenuOpen ? "translate-y-1.5 rotate-45" : ""
+                  }`}
               ></span>
               <span
-                className={`block h-0.5 w-5 bg-current transition-opacity duration-300 ${
-                  isMenuOpen ? "opacity-0" : "opacity-80"
-                }`}
+                className={`block h-0.5 w-5 bg-current transition-opacity duration-300 ${isMenuOpen ? "opacity-0" : "opacity-80"
+                  }`}
               ></span>
               <span
-                className={`block h-0.5 w-5 bg-current transition-transform duration-300 ${
-                  isMenuOpen ? "-translate-y-1.5 -rotate-45" : ""
-                }`}
+                className={`block h-0.5 w-5 bg-current transition-transform duration-300 ${isMenuOpen ? "-translate-y-1.5 -rotate-45" : ""
+                  }`}
               ></span>
             </button>
           </div>
           {isMenuOpen && (
             <div
-              className={`md:hidden absolute left-0 right-0 mt-4 flex flex-col space-y-2 rounded-2xl border px-5 py-5 text-base shadow-2xl backdrop-blur ${
-                isHeroTransparent
+              className={`md:hidden absolute left-0 right-0 mt-4 flex flex-col space-y-2 rounded-2xl border px-5 py-5 text-base shadow-2xl backdrop-blur ${isHeroTransparent
                   ? "bg-black/70 text-white border-white/10"
                   : isScrolled
-                  ? "bg-black/85 text-white border-white/10"
-                  : "bg-[var(--background)]/95 text-[color:var(--foreground)] border-black/5"
-              }`}
+                    ? "bg-black/85 text-white border-white/10"
+                    : "bg-[var(--background)]/95 text-[color:var(--foreground)] border-black/5"
+                }`}
             >
               {links.map(({ label, path }) => {
                 const isActive = pathname === path;
@@ -142,15 +135,14 @@ const Navbar = () => {
                     type="button"
                     key={`${path}-mobile`}
                     onClick={() => handleNavigate(path)}
-                    className={`text-left px-3 py-2 rounded-xl transition-colors ${
-                      isActive
+                    className={`text-left px-3 py-2 rounded-xl transition-colors ${isActive
                         ? isHeroTransparent || isScrolled
                           ? "bg-white/10 text-white"
                           : "bg-black/5"
                         : isHeroTransparent || isScrolled
-                        ? "text-white/70 hover:bg-white/5"
-                        : "opacity-80 hover:opacity-100"
-                    }`}
+                          ? "text-white/70 hover:bg-white/5"
+                          : "opacity-80 hover:opacity-100"
+                      }`}
                   >
                     {label}
                   </button>

@@ -54,38 +54,38 @@ export default function Home() {
 
   return (
     <div className="">
-        <div className="md:px-28">
-          <Hero scrollToContact={scrollToContact} />
-        </div>
+      <div className="md:px-28">
+        <Hero scrollToContact={scrollToContact} />
+      </div>
 
-        {/* <ScrollVelocity 
+      {/* <ScrollVelocity 
           className="text-clip"
           texts={[ 'JavaScript' ]} 
         /> */}
 
 
-        <section className="About md:px-28 bg-gray-800 relative w-full mt-10">
-          <div className="container mx-auto px-4 py-10 md:py-20 md:pt-40 md:pb-60">
-            <About page="home" />
-          </div>
+      <section className="About md:px-28 bg-gray-800 relative w-full">
+        <div className="container mx-auto px-4 py-10 md:py-20 md:pt-40 md:pb-60">
+          <About page="home" />
+        </div>
+      </section>
+
+      <div className="mx-auto min-h-screen">
+        <section className="md:px-28 md:pb-40 services mt-20 md:-mt-36 ">
+          <Services />
         </section>
 
-        <div className="mx-auto min-h-screen">
-          <section className="md:px-28 md:pb-40 services mt-20 md:-mt-36 ">
-            <Services />
-          </section>
+        <section className="project mt-10 bg-gray-800 md:px-28 px-2">
+          <Projects page="home" limit={4} />
+        </section>
 
-          <section className="project mt-10 bg-gray-800 md:px-28 px-2">
-            <Projects page="home" limit={4} />
-          </section>
-
-          <section className="contact md:px-28 px-2 mt-10" ref={contactRef}>
-            <Contact  />
-          </section>
+        <section className="contact md:px-28 px-2 mt-10" ref={contactRef}>
+          <Contact />
+        </section>
 
 
-        </div>
-     
+      </div>
+
     </div>
   );
 }

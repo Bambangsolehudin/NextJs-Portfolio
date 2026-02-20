@@ -4,32 +4,14 @@ import MotionWrapper from "@/app/components/MotionWrapper";
 import React from "react";
 import projectsData, { techIcons } from "./projectsData";
 import { fadeInUp } from "@/app/utils/motionVariants";
-import SplitText from "@/app/components/SplitText/SplitText";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa";
-import { Router } from "next/router";
+import Image from "next/image";
 
 type TechIcons = {
-  HTML: string;
-  CSS: string;
-  JavaScript: string;
-  ReactJS: string;
-  TailwindCSS: string;
-  VueJS: string;
-  Laravel: string;
-  Bootstrap: string;
-  MySQL: string;
-  Figma: string;
-  AdobeXD: string;
-  Notion: string;
-  FramerMotion: string;
-  Git: string;
-  Java: string;
-} & { [key: string]: string };
+  [key: string]: string;
+};
 
-
-// -------- Types --------
 export interface Project {
   id: string | number;
   title: string;
@@ -46,7 +28,7 @@ interface ProjectsProps {
 }
 
 const Projects: React.FC<ProjectsProps> = ({ limit = 0, page }) => {
-  const displayedProjects: any[] = limit
+  const displayedProjects = limit
     ? projectsData.slice(0, limit)
     : projectsData;
 
@@ -54,119 +36,114 @@ const Projects: React.FC<ProjectsProps> = ({ limit = 0, page }) => {
   const pathname = usePathname();
 
   return (
-    <div className={`md:max-w-full py-10 mx-auto text-zinc-300 `}>
-      <div className="pb-4 mb-6">
-        {/* <SplitText 
-          text="Projects"
-          className={`md:text-xl md:bl border-b first-letter:xl text-base text-white text-start text-gray-100 pb-2`}
-          delay={20}
-          animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
-          animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
-          threshold={0.2}
-        /> */}
-        <p className="md:text-xl border-b w-fit first-letter:xl text-base text-start text-gray-100 pb-2">Projects</p>
+    <div className="py-12">
+      {/* ================= HEADER ================= */}
+      <div className="mb-10">
+        <h2 className="text-xl md:text-2xl font-semibold text-zinc-100 tracking-tight border-b border-zinc-700 pb-3 w-fit">
+          Projects
+        </h2>
       </div>
 
-    
-      {displayedProjects.map((project, index) => (
-        <MotionWrapper
-          key={project.id}
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ delay: index * 0.15 }}
-          as="a"
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${pathname == '/projects' ? 'md:px-20' : ''}`}
-        >
-          <a
-            href={`${project.url ? project.url : '#'}`}
-            target={`${project.url ? '_blank' : ''}`}
-            rel="noopener noreferrer"
-            className={`flex flex-col-reverse md:flex-row p-5 gap-8 mb-5 
-                rounded-xl hover:p-5 transition duration-300
-                ${project?.url ? 'hover:bg-white/10 cursor-pointer' : 'cursor-not-allowed'}
-            `}
+      {/* ================= PROJECT LIST ================= */}
+      <div className="space-y-8">
+        {displayedProjects.map((project, index) => (
+          <MotionWrapper
+            key={project.id}
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ delay: index * 0.1 }}
           >
-            {/* Project title and details */}
-            <div className="flex-1">
-              <div className="text-xs md:text-sm lg:text-sm text-zinc-400">
-                {project.date}
-              </div>
+            <a
+              href={project.url || "#"}
+              target={project.url ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              className={`block rounded-2xl border border-zinc-800 bg-zinc-900 p-6 transition-all duration-300 
+              ${project.url
+                  ? "hover:border-amber-400 hover:bg-zinc-800/60"
+                  : "opacity-70 cursor-not-allowed"
+                }`}
+            >
+              <div className="flex flex-col md:flex-row gap-8">
+                {/* LEFT CONTENT */}
+                <div className="flex-1">
+                  <p className="text-xs md:text-sm text-zinc-500 mb-2">
+                    {project.date}
+                  </p>
 
-              <div className="text-lg md:text-base font-semibold my-2 text-zinc-300">
-                {project.title}
-              </div>
+                  <h3 className="text-lg md:text-xl font-semibold text-zinc-100 mb-3">
+                    {project.title}
+                  </h3>
 
-              <div className="text-sm md:text-sm text-zinc-300 mb-2">
-                {project.description}
-              </div>
+                  <p className="text-sm md:text-base text-zinc-400 leading-relaxed mb-4">
+                    {project.description}
+                  </p>
 
-              <div
-                className="text-xs md:text-sm text-zinc-400 mb-2"
-                title={project.url}
-              >
-                
-                {
-                
-                project?.url 
-                  ? 
-                    (project.url.length > 40
-                    ? `${project.url.slice(0, 30)}...`
-                    : project.url)
-                  : 
-                    <span className="md:text-base text-sm text-red-600"> (Internal / Private Project) </span>
-                }
-                {project.url && <span className="inline-block">&#8594;</span>}
-              </div>
-
-              <div className="flex gap-2 mt-4 flex-wrap">
-                {project.tech.map((tech: any, idx: any) => (
-                  <div
-                    key={idx}
-                    className="flex items-center px-2 py-1 rounded bg-zinc-800"
-                  >
-                    <Image
-                      src={(techIcons as TechIcons)[tech]}
-                      alt={tech}
-                      title={tech}
-                      className="w-4 h-4 mr-2"
-                      width={16} height={16}
-                    />
-                    <span className="text-xs lg:text-sm">{tech}</span>
+                  {/* URL */}
+                  <div className="text-xs md:text-sm text-zinc-500 mb-4">
+                    {project.url ? (
+                      <>
+                        {project.url.length > 45
+                          ? `${project.url.slice(0, 40)}...`
+                          : project.url}
+                        <span className="ml-2 text-amber-400">→</span>
+                      </>
+                    ) : (
+                      <span className="text-amber-500">
+                        Internal / Private Project
+                      </span>
+                    )}
                   </div>
-                ))}
+
+                  {/* TECH STACK */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-800 border border-zinc-700 text-xs md:text-sm text-zinc-300"
+                      >
+                        <Image
+                          src={(techIcons as TechIcons)[tech]}
+                          alt={tech}
+                          width={16}
+                          height={16}
+                          className="object-contain"
+                        />
+                        {tech}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* RIGHT IMAGE */}
+                <div className="flex-1">
+                  <div className="overflow-hidden rounded-xl border border-zinc-800">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
+            </a>
+          </MotionWrapper>
+        ))}
+      </div>
 
-            {/* Image */}
-            <div className="flex-1">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full object-cover rounded-lg"
-              />
-            </div>
-          </a>
-        </MotionWrapper>
-      ))}
-
-
-
-      {
-        page == "home" &&
-          <div 
-            onClick={() => router?.push('/projects')}
-            className="flex text-base items-center justify-center text-yellow-500 mt-10 cursor-pointer hover:text-yellow-400 transition-colors border-b border-yellow-500 hover:border-yellow-400  w-fit py-2 mx-auto">
-            <p> See More </p>
-            <FaArrowRight className="ml-2" />
-          </div>
-      }
-
-
+      {/* ================= SEE MORE BUTTON ================= */}
+      {page === "home" && (
+        <div className="flex justify-center mt-14">
+          <button
+            onClick={() => router.push("/projects")}
+            className="flex items-center gap-2 text-amber-400 text-sm md:text-base font-medium hover:opacity-80 transition"
+          >
+            See More
+            <FaArrowRight />
+          </button>
+        </div>
+      )}
     </div>
   );
 };
