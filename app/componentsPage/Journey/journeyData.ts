@@ -4,7 +4,7 @@ const journeyData = [
         events: [
             {
                 month: 'May 2025 - Present',
-                title: 'CODE.ID - Senior Frontend Developer',
+                title: 'CODE.ID - Frontend Developer',
                 description: `
                     Developed new Feature for Application using nextjs for client 
                     reqruitment to enhance user experience and improve performance, Troubleshot & Fixing Bugs,
@@ -32,15 +32,15 @@ const journeyData = [
                     Actively learned and kept up with web development trends.
                 `
             },
-            {
-                month: 'Oct 2021 - Nov 2022',
-                title: 'ATT GROUP - Junior Frontend Developer',
-                description: `
-                    Developed responsive web applications using Vue.js and designed reusable, modular components,
-                    Optimized application performance and integrated RESTful APIs for seamless data communication,
-                    Created new features and conducted thorough debugging to ensure optimal system functionality
-                `
-            },
+            // {
+            //     month: 'Oct 2021 - Nov 2022',
+            //     title: 'ATT GROUP - Junior Frontend Developer',
+            //     description: `
+            //         Developed responsive web applications using Vue.js and designed reusable, modular components,
+            //         Optimized application performance and integrated RESTful APIs for seamless data communication,
+            //         Created new features and conducted thorough debugging to ensure optimal system functionality
+            //     `
+            // },
         ],
     },
     // {
