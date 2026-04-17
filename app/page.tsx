@@ -8,7 +8,7 @@
 // import BlurText from "./components/BlurText/BlurText";
 // import AnimatedContent from "./components/AnimatedContent/AnimatedContent";
 // import Squares from "./components/Squares/Squares";
-// import SplashCursor from "./components/SplashCursor/SplashCursor";
+import SplashCursor from "./components/SplashCursor/SplashCursor";
 // import GradientText from "./components/GradientText/GradientText";
 // import CircularText from "./components/CircularText/CircularText";
 // import ScrollVelocity from "./components/ScrollVelocity/ScrollVelocity";
@@ -38,6 +38,9 @@ const Hero = dynamic(() => import('./componentsPage/Hero'), {
 const Contact = dynamic(() => import('./componentsPage/Contact'), {
   ssr: false,
 })
+const Skill = dynamic(() => import('./componentsPage/Skill'), {
+  ssr: false,
+});
 
 
 export default function Home() {
@@ -58,6 +61,8 @@ export default function Home() {
         <Hero scrollToContact={scrollToContact} />
       </div>
 
+      <SplashCursor />
+
       {/* <ScrollVelocity 
           className="text-clip"
           texts={[ 'JavaScript' ]} 
@@ -67,6 +72,9 @@ export default function Home() {
       <section className="About md:px-28 bg-gray-800 relative w-full">
         <div className="container mx-auto px-4 py-10 md:py-20 md:pt-40 md:pb-60">
           <About page="home" />
+        </div>
+        <div className="skills">
+          {/* <Skill /> */}
         </div>
       </section>
 

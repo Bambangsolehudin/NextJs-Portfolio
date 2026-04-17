@@ -15,10 +15,20 @@ import { useRouter } from "next/navigation";
 import BlurText from "@/app/components/BlurText/BlurText";
 import PixelTransition from "@/app/components/PixelTransition/PixelTransition";
 
+import LogoLoop from '../../components/LogoLoop/LogoLoop';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+
 interface TechIcon {
   name: string;
   url: string;
 }
+
+const techLogos = [
+  { node: <SiReact />, title: "React", href: "https://react.dev" },
+  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+  { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+];
 
 const About = ({ page }: { page: string }) => {
   const router = useRouter();
@@ -49,7 +59,7 @@ const About = ({ page }: { page: string }) => {
         >
           <div className={`${page === "about" ? "md:px-6" : "px-0"}`}>
             <div
-              className={`flex ${page === "about" ? "md:flex-col" : "md:flex-row"
+              className={`flex ${page === "about" ? "md:flex-col" : "md:flex-col"
                 } flex-col justify-center items-start md:gap-12 gap-8`}
             >
               {/* ================= PROFILE SECTION ================= */}
@@ -79,7 +89,7 @@ const About = ({ page }: { page: string }) => {
                           }}
                         >
                           <p className="text-white text-xl font-semibold">
-                            Hello 👋
+                            Hello there 👋
                           </p>
                         </div>
                       }
@@ -91,7 +101,7 @@ const About = ({ page }: { page: string }) => {
                   </div>
                 )}
 
-                <div className="max-w-2xl">
+                <div className="w-full">
                   <BlurText
                     text="Software Developer"
                     delay={2}
@@ -123,7 +133,7 @@ const About = ({ page }: { page: string }) => {
 
               {/* ================= SKILLS ================= */}
               <div>
-                <h2 className="text-base md:text-lg font-medium text-zinc-100 border-b border-zinc-700 pb-3 mb-6">
+                <h2 className="text-base md:text-lg font-medium text-zinc-100 tracking-tight  border-zinc-700 pb-3 mb-6">
                   Skills
                 </h2>
 
@@ -146,8 +156,16 @@ const About = ({ page }: { page: string }) => {
                     )
                   )}
                 </div>
+
+               
+
+
+               
               </div>
+
             </div>
+
+          
 
             {/* ================= LOAD MORE ================= */}
             {page !== "about" && (
@@ -223,6 +241,20 @@ const About = ({ page }: { page: string }) => {
               </>
             )}
           </div>
+
+            <div className="flex h-[200px] items-center justify-center p-5 mt-20 border-y border-gray-600 rounded-md" >
+                <LogoLoop
+                  logos={techLogos}
+                  speed={200}
+                  direction="left"
+                  logoHeight={60}
+                  gap={60}
+                  hoverSpeed={10}
+                  fadeOut
+                  fadeOutColor="none"
+                  ariaLabel="Technology partners"
+                />
+              </div>
         </MotionWrapper>
       </div>
     </div>
