@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+* {
+  @apply scroll-smooth;
+}
+
+:root {
+  --background: #f5f7fa;
+  --foreground: #1a202c;
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-strong: rgba(255, 255, 255, 0.95);
+  --border-soft: rgba(148, 163, 184, 0.12);
+  --brand: #475569;
+  --brand-strong: #334155;
+  --brand-soft: #f1f5f9;
+  --accent: #64748b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #e2e8f0;
+    --surface: rgba(15, 23, 42, 0.75);
+    --surface-strong: rgba(15, 23, 42, 0.92);
+    --border-soft: rgba(148, 163, 184, 0.10);
+    --brand: #cbd5e1;
+    --brand-strong: #e2e8f0;
+    --brand-soft: rgba(30, 41, 59, 0.4);
+    --accent: #94a3b8;
+  }
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(203, 213, 225, 0.08), transparent 32%),
+    radial-gradient(circle at top right, rgba(226, 232, 240, 0.08), transparent 28%),
+    linear-gradient(180deg, #fafbfc 0%, var(--background) 22%, #f1f5f9 100%);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  letter-spacing: 0;
+  @apply transition-colors duration-300;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background:
+      radial-gradient(circle at top left, rgba(148, 163, 184, 0.03), transparent 32%),
+      radial-gradient(circle at top right, rgba(148, 163, 184, 0.02), transparent 28%),
+      linear-gradient(180deg, #0f172a 0%, var(--background) 50%, #0f172a 100%);
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 84px 84px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent 80%);
+  z-index: -1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-zinc-100 dark:bg-zinc-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-400 dark:bg-zinc-600 rounded-full hover:bg-zinc-500 dark:hover:bg-zinc-500;
+}
+
+/* Smooth animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Selection color */
+::selection {
+  background: var(--brand);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--brand);
+  color: white;
+}
+
+/* Links */
+a {
+  @apply transition-colors duration-300;
+}
+
+/* Form elements */
+input,
+textarea,
+select {
+  @apply transition-all duration-300;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  @apply ring-2;
+  --tw-ring-color: color-mix(in srgb, var(--brand) 70%, white);
+}
+
+/* Smooth page transitions */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+}
