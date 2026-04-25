@@ -246,7 +246,7 @@ export const journeyData = [
     events: [
       {
         month: "May 2025 - Present",
-        title: "CODE.ID - Senior Frontend Developer",
+        title: "CODE.ID - Frontend Developer",
         description: "Developed new features for applications using Next.js for client recruitment to enhance user experience and improve performance. Troubleshot & fixed bugs. Tested and optimized application performance.",
       },
       {
