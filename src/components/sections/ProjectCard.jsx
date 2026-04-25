@@ -102,8 +102,8 @@ export default function ProjectCard({ project, index, onShowDetails }) {
           <div className="flex-1 p-5 md:p-6 flex flex-col">
             {/* Title */}
             <motion.h3
-              className="text-lg md:text-xl font-semibold text-slate-900 dark:text-slate-100 mb-1 line-clamp-2"
-              animate={isHovered ? { color: project.color || "#64748b" } : {}}
+              className="text-lg md:text-xl font-semibold text-slate-900 hover:text-slate-50 dark:text-slate-100 mb-1 line-clamp-2"
+              animate={isHovered ? { color: "#f3f4f6" } : {}}
             >
               {project.title}
             </motion.h3>
@@ -123,11 +123,11 @@ export default function ProjectCard({ project, index, onShowDetails }) {
               {project.tech.map((tech, idx) => (
                 <motion.span
                   key={idx}
-                  className="px-2 py-0.5 text-xs font-medium rounded-md border transition-all"
+                  className="px-2 py-0.5 text-xs text-gray-50 font-medium rounded-md border transition-all"
                   style={{
                     backgroundColor: `${project.color || "#64748b"}12`,
                     borderColor: `${project.color || "#64748b"}30`,
-                    color: project.color || "#64748b",
+                    // color:  "#64748b", //project.color ||
                   }}
                   whileHover={{ scale: 1.05 }}
                 >

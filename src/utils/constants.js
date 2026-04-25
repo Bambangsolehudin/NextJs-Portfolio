@@ -29,9 +29,9 @@ export const PORTFOLIO_DATA = {
     frontend: ["React", "Next.js", "Vue.js", "React Native", "TypeScript", "TailwindCSS"],
     styling: ["TailwindCSS", "Bootstrap", "CSS3", "SCSS", "Styled Components"],
     stateManagement: ["Redux", "Context API", "Vuex", "Pinia"],
-    tools: ["Git", "Figma", "VS Code", "Webpack", "Vite", "Docker"],
+    tools: ["Git", "Figma", "VS Code", "Vite", "ClickUp", "Jira"],
     backend: ["Node.js", "Express.js", "Laravel", "MySQL", "MongoDB"],
-    other: ["RESTful APIs", "GraphQL", "Performance Optimization", "Component Architecture"],
+    other: ["RESTful APIs", "AI-assisted Development", "Performance Optimization", "Component Architecture"],
   },
 
   social: {
@@ -67,8 +67,8 @@ export const projectsData = [
     id: 8,
     title: "Soundbox App",
     image: "/portfolio/soundbox/soundbox01.png",
-    gallery: ["/portfolio/soundbox/soundbox01.png"],
-    date: "Code.Id (2025)",
+    gallery: ["/portfolio/soundbox/soundbox01.png", "/portfolio/soundbox/soundbox02.png"],
+    date: "Code.Id (2025 - Present)",
     description: "Soundbox is an internal project designed to manage information processes (including devices, merchants, transactions, and etc) that are carried out through the soundbox device. This project is currently under development.",
     url: "",
     tech: ["ExpressJs", "MySQL", "NextJs", "TailwindCSS"],

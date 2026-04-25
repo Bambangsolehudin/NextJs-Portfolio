@@ -6,7 +6,6 @@ export default function Document() {
       <Head>
         <meta charSet="utf-8" />
         <meta name="description" content="Full-Stack Developer & Designer | Building elegant digital experiences" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#1f2937" />
         
         {/* Open Graph */}
