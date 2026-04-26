@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 * {
   @apply scroll-smooth;
 }
@@ -23,18 +25,16 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #e2e8f0;
-    --surface: rgba(15, 23, 42, 0.75);
-    --surface-strong: rgba(15, 23, 42, 0.92);
-    --border-soft: rgba(148, 163, 184, 0.10);
-    --brand: #cbd5e1;
-    --brand-strong: #e2e8f0;
-    --brand-soft: rgba(30, 41, 59, 0.4);
-    --accent: #94a3b8;
-  }
+.dark {
+  --background: #0f172a;
+  --foreground: #e2e8f0;
+  --surface: rgba(15, 23, 42, 0.75);
+  --surface-strong: rgba(15, 23, 42, 0.92);
+  --border-soft: rgba(148, 163, 184, 0.10);
+  --brand: #cbd5e1;
+  --brand-strong: #e2e8f0;
+  --brand-soft: rgba(30, 41, 59, 0.4);
+  --accent: #94a3b8;
 }
 
 html {
@@ -52,13 +52,11 @@ body {
   @apply transition-colors duration-300;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background:
-      radial-gradient(circle at top left, rgba(148, 163, 184, 0.03), transparent 32%),
-      radial-gradient(circle at top right, rgba(148, 163, 184, 0.02), transparent 28%),
-      linear-gradient(180deg, #0f172a 0%, var(--background) 50%, #0f172a 100%);
-  }
+.dark body {
+  background:
+    radial-gradient(circle at top left, rgba(148, 163, 184, 0.03), transparent 32%),
+    radial-gradient(circle at top right, rgba(148, 163, 184, 0.02), transparent 28%),
+    linear-gradient(180deg, #0f172a 0%, var(--background) 50%, #0f172a 100%);
 }
 
 body::before {

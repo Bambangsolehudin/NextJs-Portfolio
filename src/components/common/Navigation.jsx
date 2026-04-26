@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import clsx from "clsx";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -87,7 +88,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
-            className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent"
+            className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 dark:from-sky-400 dark:to-blue-500 bg-clip-text text-transparent transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             style={{ cursor: "pointer" }}
@@ -106,15 +107,15 @@ export default function Navigation() {
                   className={clsx(
                     "font-medium transition-colors relative pb-2",
                     isActive
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400"
+                      ? "text-blue-600 dark:text-sky-400"
+                      : "text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-sky-400"
                   )}
                   whileHover={{ y: -2 }}
                 >
                   {item.label}
                   {isActive && (
                     <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 dark:from-sky-400 dark:to-blue-500"
                       layoutId="activeIndicator"
                       transition={{ type: "spring", stiffness: 380, damping: 40 }}
                     />
@@ -122,8 +123,9 @@ export default function Navigation() {
                 </motion.button>
               );
             })}
+            <ThemeToggle />
             <motion.button
-              className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-medium"
+              className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-700 dark:from-sky-500 dark:to-blue-600 text-white rounded-lg font-medium transition-all"
               onClick={() => scrollToSection("#contact")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -132,12 +134,14 @@ export default function Navigation() {
             </motion.button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            whileTap={{ scale: 0.95 }}
-          >
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
+            {/* Mobile Menu Button */}
+            <motion.button
+              className="p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              whileTap={{ scale: 0.95 }}
+            >
             <div className="space-y-1">
               <motion.div
                 className="w-6 h-0.5 bg-zinc-900 dark:bg-white"
@@ -152,7 +156,8 @@ export default function Navigation() {
                 animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : {}}
               />
             </div>
-          </motion.button>
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -177,7 +182,7 @@ export default function Navigation() {
                   className={clsx(
                     "block w-full text-left px-3 py-2 rounded-md font-medium transition-all",
                     isActive
-                      ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                      ? "bg-blue-100 dark:bg-sky-900/30 text-blue-600 dark:text-sky-400"
                       : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700"
                   )}
                   whileHover={{ x: 5 }}
