@@ -106,9 +106,9 @@ export default function Projects() {
           viewport={{ once: true }}
         >
           {[
-            { label: "Projects Delivered", value: sortedProjects.length },
-            { label: "Years Experience", value: "8+" },
-            { label: "Technologies", value: "20+" },
+            { label: "Projects Delivered", value: sortedProjects.length + "+" },
+            { label: "Years Experience", value: "3+" },
+            { label: "Technologies", value: "15+" },
             { label: "Happy Clients", value: "10+" },
           ].map((stat, index) => (
             <motion.div
@@ -200,19 +200,17 @@ export default function Projects() {
                                   key={`${selectedProject.id}-${index}-${image}`}
                                   type="button"
                                   onClick={() => setActiveImage(image)}
-                                  className={`relative aspect-[4/3] overflow-hidden rounded-md border transition-all ${
-                                    isActive
+                                  className={`relative aspect-[4/3] overflow-hidden rounded-md border transition-all ${isActive
                                       ? "border-slate-900 dark:border-slate-100"
                                       : "border-slate-200 dark:border-slate-700"
-                                  }`}
+                                    }`}
                                 >
                                   <Image
                                     src={image}
                                     alt={`${selectedProject.title} preview ${index + 1}`}
                                     fill
-                                    className={`object-cover transition-opacity ${
-                                      isActive ? "opacity-100" : "opacity-80 hover:opacity-100"
-                                    }`}
+                                    className={`object-cover transition-opacity ${isActive ? "opacity-100" : "opacity-80 hover:opacity-100"
+                                      }`}
                                   />
                                 </button>
                               );
