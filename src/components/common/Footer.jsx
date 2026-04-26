@@ -85,7 +85,7 @@ export default function Footer() {
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Image src={social.iconUrl} alt={social.icon} width={20} height={20} className="w-5 h-5" />
+                  <img src={social.iconUrl} alt={social.icon} width={20} height={20} className="w-5 h-5" />
                 </motion.a>
               ))}
             </div>

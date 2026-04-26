@@ -171,7 +171,7 @@ export default function Contact() {
                     whileHover={{ y: -4, scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Image src={social.icon} alt={social.label} width={20} height={20} className="h-5 w-5" />
+                    <img src={social.icon} alt={social.label} width={20} height={20} className="h-5 w-5" />
                   </motion.a>
                 ))}
               </div>
