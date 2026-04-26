@@ -12,7 +12,7 @@ export default function ProjectCard({ project, index, onShowDetails }) {
     const rect = ref.current.getBoundingClientRect();
     const x = (e.clientY - rect.top) / rect.height - 0.5;
     const y = (e.clientX - rect.left) / rect.width - 0.5;
-    
+
     setTilt({
       x: x * 15,
       y: y * -15,
@@ -68,7 +68,7 @@ export default function ProjectCard({ project, index, onShowDetails }) {
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
             )}
-            
+
             {/* Color overlay for missing images */}
             {!project.image && (
               <motion.div
@@ -102,8 +102,8 @@ export default function ProjectCard({ project, index, onShowDetails }) {
           <div className="flex-1 p-5 md:p-6 flex flex-col">
             {/* Title */}
             <motion.h3
-              className="text-lg md:text-xl font-semibold text-slate-900 hover:text-slate-50 dark:text-slate-100 mb-1 line-clamp-2"
-              animate={isHovered ? { color: "#f3f4f6" } : {}}
+              className="text-lg md:text-xl font-semibold text-slate-900 dark:text-slate-100 mb-1 line-clamp-2"
+            // animate={isHovered ? { color: "#f3f4f6" } : {}}
             >
               {project.title}
             </motion.h3>
