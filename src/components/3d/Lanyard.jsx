@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, Sphere } from "@react-three/drei";
 import * as THREE from "three";
+import Image from "next/image";
 
 // 3D Model Component
 function CardModel({ isDragging, dragRotation }) {
@@ -175,11 +176,12 @@ export default function Lanyard({ type = "svg", showStats = true }) {
             transition={{ duration: 0.3 }}
           >
             {/* SVG Lanyard Card */}
-            <div className="w-full aspect-[3/4]">
-              <img
+            <div className="relative w-full aspect-[3/4]">
+              <Image
                 src={showStats ? "/lanyard/card.svg" : "/lanyard/card-nostats.svg"}
                 alt="Bambang Solehudin - Frontend Developer"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
 
@@ -249,6 +251,8 @@ export default function Lanyard({ type = "svg", showStats = true }) {
             alt="Bambang Solehudin - Frontend Developer Lanyard"
             className="w-full h-auto drop-shadow-2xl"
             draggable="false"
+            fetchpriority="high"
+            decoding="async"
           />
         </motion.div>
 

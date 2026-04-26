@@ -4,6 +4,7 @@ import SectionTitle from "../common/SectionTitle";
 import Button from "../common/Button";
 import { PORTFOLIO_DATA } from "@/utils/constants";
 import supabase from "@/utils/supabase";
+import Image from "next/image";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -170,7 +171,7 @@ export default function Contact() {
                     whileHover={{ y: -4, scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <img src={social.icon} alt={social.label} className="h-5 w-5" />
+                    <Image src={social.icon} alt={social.label} width={20} height={20} className="h-5 w-5" />
                   </motion.a>
                 ))}
               </div>
