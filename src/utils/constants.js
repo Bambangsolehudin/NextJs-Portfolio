@@ -116,7 +116,7 @@ export const projectsData = [
   {
     id: 6,
     title: "BMOVIEINFO",
-    image: "/portfolio/Bmovieinfo/Bmovie2.png",
+    image: "/portfolio/BmovieInfo/Bmovie2.png",
     gallery: ["/portfolio/BmovieInfo/Bmovie2.png", "/portfolio/BmovieInfo/Bmovie.png"],
     date: "Personal Project - 2025",
     description: "Movie information web app built using the OMDb API for searching and viewing detailed movie data. Created as a personal learning project. No streaming functionality included.",
