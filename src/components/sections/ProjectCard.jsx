@@ -123,7 +123,7 @@ export default function ProjectCard({ project, index, onShowDetails }) {
               {project.tech.map((tech, idx) => (
                 <motion.span
                   key={idx}
-                  className="px-2 py-0.5 text-xs text-gray-50 font-medium rounded-md border transition-all"
+                  className="px-2 py-0.5 text-xs font-medium rounded-md border transition-all"
                   style={{
                     backgroundColor: `${project.color || "#64748b"}12`,
                     borderColor: `${project.color || "#64748b"}30`,
