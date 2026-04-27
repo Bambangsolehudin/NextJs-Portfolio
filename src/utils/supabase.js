@@ -41,15 +41,35 @@ const resolvedSupabaseUrl = isValidHttpUrl(SUPABASE_URL)
   ? SUPABASE_URL
   : deriveProjectUrlFromAnonKey(SUPABASE_KEY);
 
-if (!isValidHttpUrl(SUPABASE_URL) && process.env.NODE_ENV !== "production") {
-  console.warn(
-    "Supabase URL is missing or invalid. Falling back to the project URL derived from the anon key."
-  );
+// Logging for debugging
+if (process.env.NODE_ENV !== "production") {
+  if (!SUPABASE_URL) {
+    console.warn(
+      "[Supabase] NEXT_PUBLIC_SUPABASE_URL environment variable is missing"
+    );
+  }
+  if (!SUPABASE_KEY) {
+    console.warn(
+      "[Supabase] NEXT_PUBLIC_SUPABASE_ANON_KEY environment variable is missing"
+    );
+  }
+  if (!isValidHttpUrl(SUPABASE_URL)) {
+    console.warn(
+      "[Supabase] Attempting to derive URL from anon key. Set NEXT_PUBLIC_SUPABASE_URL for better reliability."
+    );
+  }
 }
 
 const supabase =
   resolvedSupabaseUrl && SUPABASE_KEY
     ? createClient(resolvedSupabaseUrl, SUPABASE_KEY)
     : null;
+
+// Additional validation in development
+if (!supabase && process.env.NODE_ENV !== "production") {
+  console.error(
+    "[Supabase] Client initialization failed. Please ensure both NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY are set in your .env.local file."
+  );
+}
 
 export default supabase;

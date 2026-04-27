@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import SectionTitle from "../common/SectionTitle";
 import Button from "../common/Button";
 import { PORTFOLIO_DATA } from "@/utils/constants";
-import supabase from "@/utils/supabase";
 import Image from "next/image";
 
 export default function Contact() {
@@ -46,22 +45,24 @@ export default function Contact() {
     setIsLoading(true);
     setSubmitError("");
 
-    if (!supabase) {
-      setSubmitError("Contact form is not configured yet. Please try again later.");
-      setIsLoading(false);
-      return;
-    }
-
     try {
-      const { error } = await supabase.from("contacts").insert([
-        {
+      const response = await fetch("/api/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           message: formData.message,
-        },
-      ]);
+        }),
+      });
 
-      if (error) throw error;
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message");
+      }
 
       setIsSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
@@ -69,7 +70,7 @@ export default function Contact() {
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (err) {
       console.error("ERROR:", err);
-      setSubmitError("Message failed to send. Please try again in a moment.");
+      setSubmitError(err.message || "Message failed to send. Please try again in a moment.");
     } finally {
       setIsLoading(false);
     }
@@ -256,14 +257,10 @@ export default function Contact() {
                 variant="primary"
                 size="lg"
                 className="w-full"
-                disabled={isLoading || !supabase}
+                disabled={isLoading}
                 isAnimated={!isLoading}
               >
-                {!supabase
-                  ? "Contact Form Unavailable"
-                  : isLoading
-                    ? "Sending..."
-                    : "Send Message"}
+                {isLoading ? "Sending..." : "Send Message"}
               </Button>
             </motion.div>
 

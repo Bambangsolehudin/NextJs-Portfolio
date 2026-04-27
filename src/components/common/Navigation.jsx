@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import clsx from "clsx";
 import ThemeToggle from "./ThemeToggle";
 
@@ -9,17 +10,22 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const observerRef = useRef(null);
+  const router = useRouter();
+  const isHomePage = router.pathname === "/" || router.pathname === "/index";
 
   const navItems = [
-    { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
-    { label: "Journey", href: "#journey" },
-    { label: "Skills", href: "#skills" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "#about", page: "/" },
+    { label: "Projects", href: "#projects", page: "/" },
+    { label: "Journey", href: "#journey", page: "/" },
+    { label: "Skills", href: "#skills", page: "/" },
+    { label: "Contact", href: "#contact", page: "/" },
+    // { label: "Messages", href: "/contact-list", external: true },
   ];
 
-  // Intersection Observer for scroll-based active state
+  // Intersection Observer for scroll-based active state (only on home page)
   useEffect(() => {
+    if (!isHomePage) return;
+
     const observerOptions = {
       root: null,
       rootMargin: "-100px 0px -66%",
@@ -34,11 +40,13 @@ export default function Navigation() {
       });
     }, observerOptions);
 
-    // Observe all sections
+    // Observe all sections (only hash links)
     navItems.forEach((item) => {
-      const element = document.querySelector(item.href);
-      if (element && observerRef.current) {
-        observerRef.current.observe(element);
+      if (!item.external) {
+        const element = document.querySelector(item.href);
+        if (element && observerRef.current) {
+          observerRef.current.observe(element);
+        }
       }
     });
 
@@ -47,7 +55,7 @@ export default function Navigation() {
         observerRef.current.disconnect();
       }
     };
-  }, []);
+  }, [isHomePage]);
 
   // Scroll background effect
   useEffect(() => {
@@ -59,17 +67,22 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href) => {
+  const handleNavigation = (item) => {
     // Close mobile menu after click
     setIsMobileMenuOpen(false);
-    
-    // Small delay to ensure menu animation completes
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 50);
+
+    if (item.external) {
+      // External page navigation
+      router.push(item.href);
+    } else {
+      // Internal section scrolling
+      setTimeout(() => {
+        const element = document.querySelector(item.href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 50);
+    }
   };
 
   return (
@@ -99,21 +112,23 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href.slice(1);
+              const isActive = !item.external && activeSection === item.href.slice(1);
+              const isCurrentPage = item.external && router.pathname === item.href;
+              
               return (
                 <motion.button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavigation(item)}
                   className={clsx(
                     "font-medium transition-colors relative pb-2",
-                    isActive
+                    isActive || isCurrentPage
                       ? "text-blue-600 dark:text-sky-400"
                       : "text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-sky-400"
                   )}
                   whileHover={{ y: -2 }}
                 >
                   {item.label}
-                  {isActive && (
+                  {(isActive || isCurrentPage) && (
                     <motion.div
                       className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 dark:from-sky-400 dark:to-blue-500"
                       layoutId="activeIndicator"
@@ -126,7 +141,13 @@ export default function Navigation() {
             <ThemeToggle />
             <motion.button
               className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-700 dark:from-sky-500 dark:to-blue-600 text-white rounded-lg font-medium transition-all"
-              onClick={() => scrollToSection("#contact")}
+              onClick={() => {
+                if (isHomePage) {
+                  handleNavigation({ label: "Contact", href: "#contact", external: false });
+                } else {
+                  router.push("/#contact");
+                }
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -174,14 +195,16 @@ export default function Navigation() {
         >
           <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-zinc-800 rounded-lg mt-2">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href.slice(1);
+              const isActive = !item.external && activeSection === item.href.slice(1);
+              const isCurrentPage = item.external && router.pathname === item.href;
+              
               return (
                 <motion.button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavigation(item)}
                   className={clsx(
                     "block w-full text-left px-3 py-2 rounded-md font-medium transition-all",
-                    isActive
+                    isActive || isCurrentPage
                       ? "bg-blue-100 dark:bg-sky-900/30 text-blue-600 dark:text-sky-400"
                       : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700"
                   )}
